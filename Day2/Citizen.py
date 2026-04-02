@@ -11,13 +11,13 @@ class Citizen:
         return f"{self.last_name} {self.middle_name} {self.first_name}"
 
     def get_hometown_id(self):
-        return f"{self.hometown.id}"
+        return f"{self.hometown.province_id}"
 
     def get_hometown_name(self):
-        return f"{self.hometown.name}"
+        return f"{self.hometown.province_name}"
 
     def get_living_area_id(self):
-        return f"{self.living_area.id}"
+        return f"{self.living_area.province_id}"
 
     def get_living_area_name(self):
-        return f"{self.living_area.name}"
+        return f"{self.living_area.province_name}"
