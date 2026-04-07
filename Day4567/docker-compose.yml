@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: fastapi_backend
+    # Chạy bằng file main.py của bạn
+    command: uv run ./main.py
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./test.db:/app/test.db
+    restart: unless-stopped
+
+  frontend:
+    build: .
+    container_name: streamlit_frontend
+    # Lệnh chạy Streamlit
+    command: uv run streamlit run frontend_api.py
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    depends_on:
+      - api # Đảm bảo backend chạy lên trước thì frontend mới khởi động
+    restart: unless-stopped
