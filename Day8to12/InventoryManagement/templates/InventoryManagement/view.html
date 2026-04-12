@@ -1,0 +1,11 @@
+{% extends "InventoryManagement/base.html" %}
+
+{% block title %}
+View
+{% endblock %}
+
+{% block content %}
+    {% for receipt in user.receipt.all %}
+        <p> <a href="/{{receipt.id}}">{{receipt.id}}</a> </p>
+    {% endfor %}
+{% endblock %}

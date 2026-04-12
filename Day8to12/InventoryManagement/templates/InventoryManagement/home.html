@@ -1,0 +1,13 @@
+{% extends 'InventoryManagement/base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<h1>Home Page</h1>
+<form action="{% url 'logout' %}" method="post" class="form-group">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Log out</button>
+</form>
+{% endblock %}

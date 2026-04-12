@@ -1,0 +1,32 @@
+{% extends 'InventoryManagement/base.html' %}
+{% block title %} View Inventory {% endblock %}
+
+{% block content %}
+    <h1> {{receipt.id}} - {{receipt.supplier_name}} </h1>
+    <form method="post" action="#">
+        {% csrf_token %}
+
+        {% for item in receipt.inventory_set.all %}
+        <div class="input-group mb-3">
+            <input type="text" value="{{item.name}}" name="N{{item.id}}" class="form-control">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="number" value="{{item.quantity}}" name="Q{{item.id}}">
+                    <input type="text" value="{{item.type}}" name="T{{item.id}}">
+                    <input type="text" value="{{item.brand}}" name="B{{item.id}}">
+                    <input type="number" value="{{item.price}}" name="P{{item.id}}">
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <input type="text" name="new">
+                <button type="submit" name="newInventory" value="newInventory" class="btn btn-success"> Add Inventory </button>
+
+            </div>
+        </div>
+        <button type="submit" name="save" value="save" class="btn btn-success"> Save </button>
+    </form>
+{% endblock %}
